@@ -33,12 +33,12 @@ internal class TmdbService
     {
         Logger.Info("Searching for {Id} in {MediaType}", id, mediaType);
 
-        if (!_mediaTypeHandlers.ContainsKey(mediaType))
+        if (!_mediaTypeHandlers.TryGetValue(mediaType, out var value))
         {
             throw new ArgumentException($"Invalid media type: {mediaType}");
         }
 
-        var r = await _mediaTypeHandlers[mediaType](id);
+        var r = await value(id);
 
         return new ResultResponse
         {

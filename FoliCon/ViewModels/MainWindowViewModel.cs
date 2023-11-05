@@ -268,11 +268,11 @@ public class MainWindowViewModel : BindableBase, IFileDragDropTarget, IDisposabl
 
             
         var cmdArgs = ProcessUtils.GetCmdArgs();
-        if (!cmdArgs.ContainsKey("path")) return;
+        if (!cmdArgs.TryGetValue("path", out var value)) return;
         
         Logger.Info("Command Line Argument Found, Initializing with Command Line Argument.");
         
-        SelectedFolder = cmdArgs["path"];
+        SelectedFolder = value;
         var mode = cmdArgs["mode"];
         if (mode != "Professional" &&
             new List<string> { "Auto (Movies & TV Shows)", "TV", "Movie", "Game" }.Contains(mode))
