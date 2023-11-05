@@ -1,4 +1,6 @@
-﻿namespace FoliCon.Models.Data;
+﻿using FoliCon.Modules;
+
+namespace FoliCon.Models.Data;
 
 public class StatusBarData : BindableBase
 {

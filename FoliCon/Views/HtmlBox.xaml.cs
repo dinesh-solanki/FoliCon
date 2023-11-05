@@ -1,4 +1,5 @@
-﻿using HandyControl.Themes;
+﻿using FoliCon.Modules;
+using HandyControl.Themes;
 
 namespace FoliCon.Views;
 

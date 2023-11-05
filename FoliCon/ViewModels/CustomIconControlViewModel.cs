@@ -1,5 +1,6 @@
 ﻿// ReSharper disable SwitchStatementMissingSomeEnumCasesNoDefault
 
+using FoliCon.Modules;
 using FoliCon.Modules.Extension;
 using FoliCon.Modules.Media;
 using FoliCon.Modules.UI;

@@ -9,6 +9,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:extension="clr-namespace:FoliCon.Modules.Extension"
              xmlns:convertor="clr-namespace:FoliCon.Modules.Convertor"
+             xmlns:langs1="clr-namespace:FoliCon.Modules"
              mc:Ignorable="d"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DataContext="{d:DesignInstance modules:PosterIconConfigViewModel }">
@@ -78,7 +79,7 @@
                 </RadioButton.Content>
             </RadioButton>
             <RadioButton x:Name="RPosterFaelpessoalHorizontal" Grid.Column="4" GroupName="PosterOverlay"
-                         ToolTip="{extension:Lang Key={x:Static langs:LangKeys.BestSuitedForHorizontal}}"
+                         ToolTip="{extension:Lang Key={x:Static langs1:LangKeys.BestSuitedForHorizontal}}"
                          Command="{Binding IconOverlayChangedCommand}"
                          CommandParameter="FaelpessoalHorizontal" FontSize="16"
                          HorizontalAlignment="Left" VerticalAlignment="Stretch"

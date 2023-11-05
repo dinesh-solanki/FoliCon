@@ -1,5 +1,5 @@
 ﻿// ReSharper disable InconsistentNaming
-namespace FoliCon.Properties.Langs;
+namespace FoliCon.Modules;
 
 public class LangProvider : INotifyPropertyChanged
 {
