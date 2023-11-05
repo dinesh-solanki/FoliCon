@@ -31,7 +31,7 @@ public class ProIcon
     {
         Logger.Debug("Converting RenderTargetBitmap to 32BppArgb");
         var stream = new MemoryStream();
-        BitmapEncoder encoder = new PngBitmapEncoder();
+        var encoder = new PngBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(rtb));
         encoder.Save(stream);
         Logger.Debug("RenderTargetBitmap converted to 32BppArgb");

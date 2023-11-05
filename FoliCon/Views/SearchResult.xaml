@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:langs="clr-namespace:FoliCon.Properties.Langs"
              xmlns:viewModels="clr-namespace:FoliCon.ViewModels"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

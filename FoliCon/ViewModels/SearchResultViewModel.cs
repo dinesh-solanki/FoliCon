@@ -372,7 +372,7 @@ public class SearchResultViewModel : BindableBase, IDialogAware
         }
     }
 
-    private async Task HandleMediaType(string itemId, Func<string, Task> handleAction)
+    private static async Task HandleMediaType(string itemId, Func<string, Task> handleAction)
     {
         await handleAction(itemId);
     }
@@ -420,9 +420,9 @@ public class SearchResultViewModel : BindableBase, IDialogAware
         });
     }
 
-    private dynamic? ChooseTrailer(IReadOnlyCollection<dynamic> results)
+    private static dynamic? ChooseTrailer(IReadOnlyCollection<dynamic> results)
     {
-        if (!results.Any()) return null;
+        if (results.Count == 0) return null;
         return results.Any(i => i.Type == "Trailer" && i.Site == "YouTube")
             ? results.First(i => i.Type == "Trailer")
             : results.First();

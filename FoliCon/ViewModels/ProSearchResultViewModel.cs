@@ -75,7 +75,7 @@ public class ProSearchResultViewModel : BindableBase, IDialogAware
         SearchAgainCommand = new DelegateCommand(PrepareForSearch);
     }
 
-    private void OpenImageMethod(object parameter)
+    private static void OpenImageMethod(object parameter)
     {
         Logger.Debug("Opening Image {Image}", parameter);
         var link = (string)parameter;

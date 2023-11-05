@@ -13,7 +13,7 @@ namespace FoliCon.Modules.utils;
 public static class FileUtils
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-    private static readonly string[] stringArray = { ".png", ".ico" };
+    private static readonly string[] StringArray = { ".png", ".ico" };
 
     /// <summary>
     /// Determines whether a given string value ends with any string within a collection of file extensions.
@@ -28,7 +28,7 @@ public static class FileUtils
     }
 
     public static bool IsPngOrIco(string fileName) =>
-        fileName != null && EndsIn(fileName, stringArray);
+        fileName != null && EndsIn(fileName, StringArray);
 
     /// <summary>
     /// Deletes Icons (.ico and Desktop.ini files) from all subfolders of given path.

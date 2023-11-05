@@ -33,7 +33,7 @@ public partial class PosterIconAlt
     private static Bitmap RenderTargetBitmapTo32BppArgb(BitmapSource rtb)
     {
         var stream = new MemoryStream();
-        BitmapEncoder encoder = new PngBitmapEncoder();
+        var encoder = new PngBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(rtb));
         encoder.Save(stream);
         return new Bitmap(stream); //png;
