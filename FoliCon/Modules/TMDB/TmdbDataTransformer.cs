@@ -15,8 +15,8 @@ internal class TmdbDataTransformer
     public TmdbDataTransformer(ref DataTable listDataTable,
         ref List<ImageToDownload> imgDownloadList)
     {
-        this._listDataTable = listDataTable;
-        this._imgDownloadList = imgDownloadList;
+        _listDataTable = listDataTable;
+        _imgDownloadList = imgDownloadList;
     }
 
     private const string SmallPosterBase = "https://image.tmdb.org/t/p/w200";

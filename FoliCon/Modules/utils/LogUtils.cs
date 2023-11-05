@@ -89,7 +89,7 @@ public static class LogUtils
                 AutoSessionTracking = true,
                 User = new SentryNLogUser { Username = Environment.MachineName }
             },
-            IncludeEventDataOnBreadcrumbs = true,
+            IncludeEventDataOnBreadcrumbs = true
         };
         sentryTarget.Options.AddExceptionFilterForType<UnauthorizedAccessException>();
         sentryTarget.Tags.Add(new TargetPropertyWithContext("exception", "${exception:format=shorttype}"));

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace FoliCon.Modules.DeviantArt;
 
-public class DArt : BindableBase
+public class DArt : BindableBase, IDisposable
 {
     private string _clientAccessToken;
     private string _clientSecret;
@@ -103,5 +103,11 @@ public class DArt : BindableBase
     private string GetBrowseApiUrl(string query, int offset)
     {
         return $"https://www.deviantart.com/api/v1/oauth2/browse/newest?timerange=alltime&offset={offset}&q={query} folder icon&limit=20&access_token={ClientAccessToken}";
+    }
+
+    public void Dispose()
+    {
+        _cache?.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

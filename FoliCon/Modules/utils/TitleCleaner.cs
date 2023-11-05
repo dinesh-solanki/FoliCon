@@ -3,7 +3,7 @@ using Logger = NLog.Logger;
 
 namespace FoliCon.Modules.utils;
 
-internal static class TitleCleaner
+internal static partial class TitleCleaner
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
     public static string Clean(string title)
@@ -17,12 +17,19 @@ internal static class TitleCleaner
         // (year|resolutions) find at least one main token to remove
         // p?i? \)? --Not needed. To emphasize removal of 1080i, closing bracket etc, but not needed due to the last part
         // .* --Remove all trailing information after having found year or resolution as junk usually follows
-        var cleanTitle = Regex.Replace(normalizedTitle, "\\s*\\(?((\\d{4})|(420)|(720)|(1080))p?i?\\)?.*", "", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-        cleanTitle = Regex.Replace(cleanTitle, @"\[.*\]", "", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-        cleanTitle = Regex.Replace(cleanTitle, " {2,}", " ", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        var cleanTitle = QualityAndResolutionFormatRegex().Replace(normalizedTitle, "");
+        cleanTitle = EnclosedInBracketsRegex().Replace(cleanTitle, "");
+        cleanTitle = MultipleSpacesRegex().Replace(cleanTitle, " ");
         var clean = string.IsNullOrWhiteSpace(cleanTitle) ? normalizedTitle : cleanTitle;
         
         Logger.Debug("Cleaned title: {Clean}, Original title: {Title}", clean, title);
         return clean;
     }
+
+    [GeneratedRegex("\\s*\\(?((\\d{4})|(420)|(720)|(1080))p?i?\\)?.*", RegexOptions.IgnoreCase | RegexOptions.Compiled, "en-US")]
+    private static partial Regex QualityAndResolutionFormatRegex();
+    [GeneratedRegex(@"\[.*\]", RegexOptions.IgnoreCase | RegexOptions.Compiled, "en-US")]
+    private static partial Regex EnclosedInBracketsRegex();
+    [GeneratedRegex(" {2,}", RegexOptions.IgnoreCase | RegexOptions.Compiled, "en-US")]
+    private static partial Regex MultipleSpacesRegex();
 }

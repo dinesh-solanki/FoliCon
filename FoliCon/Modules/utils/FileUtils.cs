@@ -13,6 +13,8 @@ namespace FoliCon.Modules.utils;
 public static class FileUtils
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+    private static readonly string[] stringArray = { ".png", ".ico" };
+
     /// <summary>
     /// Determines whether a given string value ends with any string within a collection of file extensions.
     /// </summary>
@@ -26,7 +28,7 @@ public static class FileUtils
     }
 
     public static bool IsPngOrIco(string fileName) =>
-        fileName != null && EndsIn(fileName, new[] { ".png", ".ico" });
+        fileName != null && EndsIn(fileName, stringArray);
 
     /// <summary>
     /// Deletes Icons (.ico and Desktop.ini files) from all subfolders of given path.
@@ -355,7 +357,7 @@ public static class FileUtils
         }
         else if (result.MediaType == MediaTypes.Movie || result.MediaType == MediaTypes.Collection)
         {
-            if (query.ToLower(CultureInfo.InvariantCulture).Contains("collection"))
+            if (query.Contains("collection", StringComparison.CurrentCultureIgnoreCase))
             {
                 dynamic ob = isPickedById
                     ? (Collection)result.Result
@@ -413,8 +415,7 @@ public static class FileUtils
                 cchIconFile = 0
             };
             //FolderSettings.iIconIndex = 0;
-            var unused =
-                SHGetSetFolderCustomSettings(ref folderSettings, folderPath, FCS.FCS_FORCEWRITE);
+            _ = SHGetSetFolderCustomSettings(ref folderSettings, folderPath, FCS.FCS_FORCEWRITE);
             Logger.Info("Folder Icon Set, ICO File: {IcoFile}, Folder Path: {FolderPath}", icoFile, folderPath);
         }
         catch (Exception e)
